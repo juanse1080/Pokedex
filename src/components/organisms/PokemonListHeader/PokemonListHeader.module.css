@@ -1,0 +1,24 @@
+.header {
+  color: white;
+  padding: var(--spacing-md);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 769px) {
+  .header {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+  }
+}
+

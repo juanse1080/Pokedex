@@ -1,0 +1,2 @@
+export { PokemonListContent } from "./PokemonListContent";
+

@@ -78,7 +78,6 @@ export const PokemonDetailPage: React.FC = () => {
       <PokemonDetailInfo
         id={pokemonId.toString()}
         name={pokemon.name}
-        order={pokemon.order}
         types={pokemonTypes}
         moves={pokemonMoves}
         stats={pokemonStats}

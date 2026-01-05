@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { PokemonListFilter } from "../PokemonListFilter";
 import { renderWithProviders } from "@/test/helpers";
@@ -62,7 +62,7 @@ describe("PokemonListFilter", () => {
   });
 
   it("should show TextAIcon when sortBy is name", () => {
-    const { container } = renderWithProviders(
+    renderWithProviders(
       <PokemonListFilter
         searchQuery=""
         sortBy="name"

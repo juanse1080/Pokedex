@@ -11,7 +11,6 @@ import { useFavoritesContext } from "@/contexts/FavoritesContexts";
 export type PokemonDetailInfoProps = {
   id: string;
   name: string;
-  order: number;
   types: string[];
   height: number;
   weight: number;
@@ -26,7 +25,6 @@ export type PokemonDetailInfoProps = {
 export const PokemonDetailInfo = ({
   id,
   name,
-  order,
   types,
   height,
   weight,
@@ -45,7 +43,6 @@ export const PokemonDetailInfo = ({
     toggleFavorite({
       id: pokemonId,
       name,
-      order,
     });
   };
 

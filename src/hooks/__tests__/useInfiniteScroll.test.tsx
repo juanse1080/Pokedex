@@ -4,7 +4,7 @@ import { useInfiniteScroll } from "../useInfiniteScroll";
 
 describe("useInfiniteScroll", () => {
   beforeEach(() => {
-    global.IntersectionObserver = vi.fn(() => ({
+    globalThis.IntersectionObserver = vi.fn(() => ({
       observe: vi.fn(),
       disconnect: vi.fn(),
       unobserve: vi.fn(),

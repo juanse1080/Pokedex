@@ -4,7 +4,7 @@ import { useInfinitePokemonListRest } from "../useInfinitePokemonListRest";
 import { FetcherError } from "@/utils/fetcher";
 
 const mockFetch = vi.fn();
-global.fetch = mockFetch;
+globalThis.fetch = mockFetch as typeof fetch;
 
 describe("useInfinitePokemonListRest", () => {
   beforeEach(() => {

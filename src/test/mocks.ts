@@ -4,7 +4,6 @@ import { GET_POKEMON_DETAIL } from "@/graphql/queries/pokemonDetail.query";
 import {
   makePokemonListResponse,
   makePokemonDetailResponse,
-  makePokemonListItem,
   makePokemon,
   SAMPLE_POKEMON_LIST,
 } from "./factories";

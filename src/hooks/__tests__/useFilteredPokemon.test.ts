@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { renderHook } from "@testing-library/react";
 import { useFilteredPokemon } from "../useFilteredPokemon";
 import { SAMPLE_POKEMON_LIST } from "@/test/factories";
-import type { PokemonOrderBy } from "@/graphql/types";
 
 describe("useFilteredPokemon", () => {
   describe("validation", () => {

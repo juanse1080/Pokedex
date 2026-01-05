@@ -21,11 +21,16 @@ export const fetcher = async <T = unknown>(
 };
 
 export class FetcherError extends Error {
+  status: number;
+  metadata?: Record<string, unknown>;
+
   constructor(
     message: string,
-    public status: number,
-    public metadata?: Record<string, unknown>
+    status: number,
+    metadata?: Record<string, unknown>
   ) {
     super(message);
+    this.status = status;
+    this.metadata = metadata;
   }
 }

@@ -45,15 +45,15 @@ describe("LazyImage", () => {
   });
 
   it("should show skeleton initially", () => {
-    const { container } = render(
+    render(
       <LazyImage src="https://example.com/image.png" alt="Test image" />
     );
-    const skeleton = container.querySelector('[aria-hidden="true"]');
+    const skeleton = document.querySelector('[aria-hidden="true"]');
     expect(skeleton).toBeInTheDocument();
   });
 
   it("should show fallback when image fails to load", async () => {
-    const { container } = render(
+    render(
       <LazyImage
         src="https://invalid-url-that-fails.com/image.png"
         alt="Test image"

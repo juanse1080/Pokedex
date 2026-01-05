@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <script>
+      (function() {
+        const path = window.location.pathname;
+        const search = window.location.search;
+        const hash = window.location.hash;
+        
+        const pathSegments = path.split('/').filter(Boolean);
+        const is404 = pathSegments[pathSegments.length - 1] === '404.html';
+        
+        if (is404) {
+          pathSegments.pop();
+        }
+        
+        const basePath = pathSegments.length > 0 
+          ? '/' + pathSegments[0] + '/' 
+          : '/';
+        
+        const redirectPath = basePath + 'index.html' + search + hash;
+        window.location.replace(redirectPath);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
+

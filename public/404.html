@@ -10,16 +10,14 @@
         const search = window.location.search;
         const hash = window.location.hash;
         
-        const pathSegments = path.split('/').filter(Boolean);
-        const is404 = pathSegments[pathSegments.length - 1] === '404.html';
+        let basePath = '/';
+        const pathSegments = path.split('/').filter(function(segment) {
+          return segment && segment !== '404.html';
+        });
         
-        if (is404) {
-          pathSegments.pop();
+        if (pathSegments.length > 0) {
+          basePath = '/' + pathSegments[0] + '/';
         }
-        
-        const basePath = pathSegments.length > 0 
-          ? '/' + pathSegments[0] + '/' 
-          : '/';
         
         const redirectPath = basePath + 'index.html' + search + hash;
         window.location.replace(redirectPath);

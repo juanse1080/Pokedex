@@ -1,0 +1,14 @@
+@import './variables.css';
+
+.shadow-drop-2dp {
+  box-shadow: var(--shadow-drop-2dp);
+}
+
+.shadow-drop-6dp {
+  box-shadow: var(--shadow-drop-6dp);
+}
+
+.shadow-inner-2dp {
+  box-shadow: var(--shadow-inner-2dp);
+}
+

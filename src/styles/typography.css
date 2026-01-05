@@ -1,0 +1,49 @@
+@import './variables.css';
+
+.typography-headline {
+  font-size: var(--font-size-header-headline);
+  line-height: var(--line-height-header-headline);
+  font-weight: var(--font-weight-bold);
+}
+
+.typography-subtitle-first {
+  font-size: var(--font-size-header-subtitle-first);
+  line-height: var(--line-height-header-subtitle);
+  font-weight: var(--font-weight-semibold);  
+}
+
+.typography-subtitle-second {
+  font-size: var(--font-size-header-subtitle-second);
+  line-height: var(--line-height-header-subtitle);
+  font-weight: var(--font-weight-semibold);  
+}
+
+.typography-subtitle-third {
+  font-size: var(--font-size-header-subtitle-third);
+  line-height: var(--line-height-header-subtitle);
+  font-weight: var(--font-weight-semibold);  
+}
+
+.typography-body-first {
+  font-size: var(--font-size-body-first);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-normal);  
+}
+
+.typography-body-second {
+  font-size: var(--font-size-body-second);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-normal);  
+}
+
+.typography-body-third {
+  font-size: var(--font-size-body-third);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-normal);  
+}
+
+.typography-caption {
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-body-caption);
+  font-weight: var(--font-weight-medium);
+}

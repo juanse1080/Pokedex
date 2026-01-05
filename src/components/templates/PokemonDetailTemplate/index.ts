@@ -1,0 +1,2 @@
+export { PokemonDetailTemplate } from "./PokemonDetailTemplate";
+

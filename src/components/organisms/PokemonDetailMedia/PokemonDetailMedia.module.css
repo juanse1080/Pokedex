@@ -1,0 +1,26 @@
+.mediaContainer {
+  position: relative;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  color: var(--color-white);
+  flex-grow: 1;
+  z-index: 1;
+}
+
+.mediaImage {
+  position: absolute !important;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.hidden {
+  opacity: 0 !important;
+}

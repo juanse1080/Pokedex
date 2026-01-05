@@ -1,0 +1,2 @@
+export { HashtagIcon } from "./HashtagIcon";
+

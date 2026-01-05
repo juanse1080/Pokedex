@@ -1,0 +1,1 @@
+export { PokemonDetailHeader } from "./PokemonDetailHeader";

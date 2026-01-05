@@ -1,0 +1,55 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.input {
+  /* visually hidden but accessible */
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.visual {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 16px;
+  color: var(--color-primary);
+}
+
+/* Focus visible sobre el "icono" */
+.input:focus-visible + .visual {
+  outline: none;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Hover sutil */
+.root:hover .label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabled .label {
+  text-decoration: none;
+}

@@ -1,0 +1,2 @@
+export { PokemonDetailPage } from "./PokemonDetailPage";
+

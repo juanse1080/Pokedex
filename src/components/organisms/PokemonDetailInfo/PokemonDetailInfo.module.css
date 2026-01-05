@@ -1,0 +1,105 @@
+.infoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+
+  background-color: var(--color-white);
+  padding: 56px 20px 20px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-inner-2dp);
+}
+
+.favoriteToggle {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 2;
+}
+
+.infoTypes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.infoChip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2px 8px;
+  color: var(--color-white);
+  text-transform: capitalize;
+
+  border-radius: 10px;
+  background: var(--pokemon-background-type);
+}
+
+.infoAttributes {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-lg);
+}
+
+.infoAttributeContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 4px;
+}
+
+.infoAttributeValue {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0px;
+  gap: 8px;
+}
+
+.infoAttributeCaption {  
+  color: var(--color-gray-medium);
+}
+
+.infoAbilityValue {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.infoDivider {
+  width: 1px;
+  background-color: var(--color-gray-light);
+}
+
+.infoStats {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+}
+
+.infoStatLabels {
+  display: flex;
+  flex-direction: column;
+  padding-right: var(--spacing-sm);
+}
+
+.infoStatValues {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--spacing-sm);
+}
+
+.infoStatProgress {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}

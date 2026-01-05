@@ -1,73 +1,289 @@
-# React + TypeScript + Vite
+# Pokédex React GraphQL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web profesional de Pokédex construida con React, Apollo Client y GraphQL. Implementa una arquitectura escalable siguiendo Atomic Design, con manejo robusto de estados, validación de inputs, sistema de favoritos persistente y optimizaciones de performance.
 
-Currently, two official plugins are available:
+## 🎯 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Lista de Pokémon con scroll infinito (GraphQL y REST API)
+- ✅ Vista de detalle de Pokémon (nombre, tipos, imagen, peso, altura, estadísticas, movimientos)
+- ✅ Sistema de favoritos con persistencia en localStorage
+- ✅ Filtro por tipo de Pokémon
+- ✅ Búsqueda con validación (mínimo 3 caracteres, sin caracteres especiales)
+- ✅ Ordenamiento por ID o nombre (alfabético)
+- ✅ Navegación entre Pokémon con teclado (ArrowLeft/ArrowRight)
+- ✅ Diseño responsive y accesible
+- ✅ Estados de carga, error y vacío manejados
+- ✅ Tests unitarios con cobertura de funcionalidades clave
 
-## React Compiler
+## 🚀 Demo / Deploy
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+**TBD** - Link de deploy pendiente
 
-## Expanding the ESLint configuration
+## 🛠 Stack Tecnológico
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** - Biblioteca UI
+- **TypeScript 5.9** - Tipado estático
+- **Vite 7** - Build tool y dev server
+- **Apollo Client 4** - Cliente GraphQL
+- **React Router v7** - Navegación
+- **CSS Modules** - Estilos modulares
+- **Vitest** - Framework de testing
+- **Testing Library** - Utilidades de testing
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📋 Requisitos Previos
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Node.js**: 18.x o superior
+- **pnpm**: 8.x o superior (recomendado) o npm 9.x+
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📦 Instalación
+
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Ejecución
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Desarrollo
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev
 ```
+
+La aplicación estará disponible en `http://localhost:5173`
+
+### Testing
+
+```bash
+pnpm test
+```
+
+Para ejecutar tests en modo watch:
+
+```bash
+pnpm test --watch
+```
+
+Para abrir la UI de tests:
+
+```bash
+pnpm test:ui
+```
+
+### Build
+
+```bash
+pnpm build
+```
+
+El build de producción se generará en `dist/`
+
+### Preview del build
+
+```bash
+pnpm preview
+```
+
+## 🗂 Estructura del Proyecto
+
+```
+src/
+├── apollo/
+│   └── client.ts                    # Configuración Apollo Client
+├── graphql/
+│   ├── queries/
+│   │   ├── pokemonList.query.ts     # Query lista de Pokémon
+│   │   ├── pokemonDetail.query.ts   # Query detalle de Pokémon
+│   │   └── pokemonTypeList.query.ts # Query lista de tipos
+│   └── types.ts                     # Tipos TypeScript generados
+├── hooks/
+│   ├── usePokemonDetail.ts          # Hook detalle de Pokémon
+│   ├── usePokemonTypes.ts           # Hook tipos de Pokémon
+│   ├── usePokemonListFilters.ts     # Hook gestión de filtros
+│   ├── useFilteredPokemon.ts        # Hook filtrado y ordenamiento (cliente)
+│   ├── useInfinitePokemonList.ts    # Hook lista infinita GraphQL
+│   ├── useInfinitePokemonListRest.ts # Hook lista infinita REST
+│   ├── useInfiniteScroll.ts         # Hook scroll infinito (IntersectionObserver)
+│   └── useDebouncedValue.ts         # Hook debounce para búsqueda
+├── utils/
+│   ├── storage.ts                   # Utilidades localStorage (favoritos)
+│   ├── pokemon.ts                   # Utilidades Pokémon (URLs de imágenes)
+│   ├── fetcher.ts                   # Utilidades fetch (REST API)
+│   └── cx.ts                        # Utilidad className condicional
+├── contexts/
+│   └── FavoritesContexts/           # Contexto de favoritos
+│       ├── FavoritesProvider.tsx
+│       └── useFavoritesContext.ts
+├── const/
+│   ├── colors.ts                    # Constantes de colores
+│   └── labels.ts                    # Constantes de etiquetas
+├── components/
+│   ├── atoms/                       # Componentes básicos (Button, Input, Badge, etc.)
+│   ├── molecules/                   # Componentes compuestos (PokemonCard, FavoriteToggle, LazyImage)
+│   ├── organisms/                   # Componentes complejos (PokemonListContent, PokemonListFilter, etc.)
+│   ├── templates/                   # Plantillas de página (PokemonListTemplate, PokemonDetailTemplate)
+│   └── pages/                       # Páginas con routing
+│       ├── PokemonListPage/         # Lista principal (GraphQL)
+│       ├── PokemonListRestPage/     # Lista alternativa (REST)
+│       ├── PokemonListFavoritesPage/ # Lista de favoritos
+│       └── PokemonDetailPage/       # Detalle de Pokémon
+├── styles/
+│   ├── globals.css                  # Estilos globales
+│   ├── variables.css                # Variables CSS (tokens de diseño)
+│   ├── typography.css               # Tipografía
+│   └── shadows.css                  # Sombras
+└── test/
+    ├── factories.ts                 # Factories para crear datos de prueba
+    ├── mocks.ts                     # Mocks de GraphQL (MockedProvider)
+    ├── helpers.tsx                  # Helpers de testing (renderWithProviders)
+    └── setup.ts                     # Configuración de tests
+```
+
+## 🏗 Arquitectura
+
+### Flujo de Datos: Data → Hooks → UI
+
+1. **GraphQL/REST API** → Datos desde servidor
+2. **Hooks personalizados** → Lógica de negocio y estado
+   - `useInfinitePokemonList`: Gestiona paginación, filtros y búsqueda (GraphQL)
+   - `useFilteredPokemon`: Filtrado y ordenamiento en cliente (para REST)
+   - `usePokemonListFilters`: Estado de filtros (búsqueda, orden, tipo)
+   - `useDebouncedValue`: Optimiza búsqueda con debounce (500ms)
+3. **Componentes UI** → Presentación y interacción
+   - Atomic Design: atoms → molecules → organisms → templates → pages
+
+### Manejo de Estados
+
+- **Loading**: Skeletons y spinners durante carga inicial y paginación
+- **Error**: Mensajes descriptivos con posibilidad de reintento
+- **Empty**: Mensajes informativos cuando no hay resultados
+- **Success**: Renderizado de datos con optimizaciones (lazy loading de imágenes)
+
+### Sistema de Favoritos
+
+- **API del hook**: `useFavoritesContext()` expone:
+  - `favorites`: Array de favoritos
+  - `toggleFavorite(pokemon)`: Agregar/remover favorito
+  - `isFavorite(id)`: Verificar si es favorito
+- **Persistencia**: localStorage con clave `pokedex_favorites`
+- **Deduplicación**: Automática al agregar (verifica por `id`)
+- **Formato**: `Array<{ id: number; name: string }>`
+
+### Validación de Input
+
+**Reglas de búsqueda:**
+
+- Mínimo 3 caracteres para activar búsqueda
+- Solo letras, números, espacios y guiones (`/^[a-z0-9\s-]+$/i`)
+- Sin caracteres especiales
+
+**Cómo afecta UX:**
+
+- Botón de búsqueda deshabilitado si input inválido
+- Búsqueda no se ejecuta hasta cumplir reglas
+- Mensajes de error accesibles con `aria-invalid` y `aria-describedby`
+- Validación en tiempo real con feedback visual
+
+### Accesibilidad
+
+**Implementado:**
+
+- **Navegación por teclado**: ArrowLeft/ArrowRight para navegar entre Pokémon en detalle
+- **Focus states**: `:focus-visible` en todos los elementos interactivos
+- **ARIA labels**: `aria-label`, `aria-describedby`, `aria-invalid` en inputs
+- **Roles semánticos**: `button`, `textbox`, `dialog` (popover)
+- **Inputs ocultos visualmente**: Radio buttons con técnica de screen-reader-only
+- **Manejo de teclado**: Enter/Espacio en elementos no-button con `role="button"`
+
+## 🧪 Testing
+
+### Cobertura
+
+Los tests cubren:
+
+- ✅ **Validación de búsqueda**: Mínimo 3 caracteres, sin caracteres especiales
+- ✅ **Ordenamiento alfabético**: Por ID y por nombre
+- ✅ **Sistema de favoritos**: Toggle, persistencia en localStorage, verificación
+- ✅ **Filtrado por tipo**: Funcionalidad de filtros
+- ✅ **Componentes UI**: Input, FavoriteToggle, PokemonCard
+- ✅ **Hooks**: useFilteredPokemon, useDebouncedValue, usePokemonDetail
+- ✅ **Utils**: storage, cx, pokemon
+
+### Estrategia de Mocking
+
+**GraphQL**: Se utiliza `MockedProvider` de Apollo Client (`@apollo/client/testing/react`)
+
+- Mocks centralizados en `src/test/mocks.ts`
+- Factories reutilizables en `src/test/factories.ts`
+- Helper `renderWithProviders()` que envuelve componentes con:
+  - `MockedProvider` (GraphQL)
+  - `MemoryRouter` (routing)
+  - `FavoritesProvider` (contexto)
+  - localStorage mock
+
+**Ejemplo de uso:**
+
+```typescript
+import { renderWithProviders } from "@/test/helpers";
+import { createPokemonListMock } from "@/test/mocks";
+
+const mocks = [createPokemonListMock(SAMPLE_POKEMON_LIST)];
+renderWithProviders(<PokemonListPage />, { mocks });
+```
+
+## ⚡ Performance / UX
+
+**Optimizaciones implementadas:**
+
+1. **Scroll infinito**: IntersectionObserver con `rootMargin: 200px` para precarga
+2. **Debounce en búsqueda**: 500ms para reducir requests innecesarios
+3. **Lazy loading de imágenes**: Componente `LazyImage` con loading nativo
+4. **Deduplicación en paginación**: Evita duplicados al hacer `fetchMore`
+5. **Memoización**: `useMemo` en filtros y ordenamiento
+6. **CSS Modules**: Estilos encapsulados sin runtime overhead
+7. **Variables CSS centralizadas**: Tokens de diseño reutilizables
+
+## 🔧 Configuración
+
+### Variables de Entorno
+
+Crear archivo `.env.local` con:
+
+```env
+VITE_POKEMON_GRAPHQL_URI=https://tu-endpoint-graphql.com/v1/graphql
+VITE_POKEMON_REST_URI=https://pokeapi.co/api/v2
+VITE_SPRITES_BASE=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon
+```
+
+### Path Aliases
+
+El proyecto utiliza path aliases configurados en `vite.config.ts`:
+
+- `@/pages` → `src/components/pages`
+- `@/atoms` → `src/components/atoms`
+- `@/molecules` → `src/components/molecules`
+- `@/organisms` → `src/components/organisms`
+- `@/templates` → `src/components/templates`
+- `@/hooks` → `src/hooks`
+- `@/graphql` → `src/graphql`
+- `@/apollo` → `src/apollo`
+- `@/styles` → `src/styles`
+- `@/utils` → `src/utils`
+- `@/const` → `src/const`
+- `@/contexts` → `src/contexts`
+- `@/test` → `src/test`
+
+## 🛣 Rutas Disponibles
+
+- `/` - Lista principal de Pokémon (GraphQL)
+- `/rest` - Lista alternativa de Pokémon (REST API)
+- `/favorites` - Lista de Pokémon favoritos
+- `/pokemon/:id` - Detalle de un Pokémon específico
+
+## 📝 Próximos Pasos
+
+1. **Deploy**: Configurar CI/CD y deploy en producción (Vercel/Netlify)
+2. **Tests de integración**: Flujos completos (búsqueda → filtro → detalle → favorito)
+3. **Optimización de imágenes**: Implementar WebP/AVIF con fallbacks
+4. **PWA**: Service Worker y offline support
+5. **Internacionalización**: Soporte multi-idioma (i18n)
+6. **Mejoras de accesibilidad**: Tests con axe-core, mejor contraste en modo oscuro

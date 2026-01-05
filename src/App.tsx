@@ -1,34 +1,27 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import client from "@/apollo/client";
+import { PokemonDetailPage } from "@/pages/PokemonDetailPage";
+import { PokemonListPage } from "@/pages/PokemonListPage";
+import { PokemonListRestPage } from "@/pages/PokemonListRestPage";
+import { PokemonListFavoritesPage } from "@/pages/PokemonListFavoritesPage";
+import { ApolloProvider } from "@apollo/client/react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { FavoritesProvider } from "@/contexts/FavoritesContexts";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ApolloProvider client={client}>
+      <FavoritesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<PokemonListPage />} />
+            <Route path="/rest" element={<PokemonListRestPage />} />
+            <Route path="/favorites" element={<PokemonListFavoritesPage />} />
+            <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </BrowserRouter>
+      </FavoritesProvider>
+    </ApolloProvider>
   );
 }
 

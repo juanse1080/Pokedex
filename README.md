@@ -1,59 +1,39 @@
 # Pokédex React GraphQL
 
-Pokédex profesional construida con React, Apollo Client y GraphQL, siguiendo principios de Atomic Design y mejores prácticas de desarrollo frontend.
+Aplicación web profesional de Pokédex construida con React, Apollo Client y GraphQL. Implementa una arquitectura escalable siguiendo Atomic Design, con manejo robusto de estados, validación de inputs, sistema de favoritos persistente y optimizaciones de performance.
 
 ## 🎯 Características
 
-- ✅ Lista de Pokémon con scroll infinito
-- ✅ Lista de Pokémon REST API alternativa
-- ✅ Página de favoritos con persistencia en localStorage
+- ✅ Lista de Pokémon con scroll infinito (GraphQL y REST API)
 - ✅ Vista de detalle de Pokémon (nombre, tipos, imagen, peso, altura, estadísticas, movimientos)
-- ✅ Sistema de favoritos con contexto React
+- ✅ Sistema de favoritos con persistencia en localStorage
 - ✅ Filtro por tipo de Pokémon
 - ✅ Búsqueda con validación (mínimo 3 caracteres, sin caracteres especiales)
-- ✅ Ordenamiento por ID o nombre
+- ✅ Ordenamiento por ID o nombre (alfabético)
+- ✅ Navegación entre Pokémon con teclado (ArrowLeft/ArrowRight)
 - ✅ Diseño responsive y accesible
-- ✅ Estados de carga y error manejados
-- ✅ Tests unitarios incluidos
+- ✅ Estados de carga, error y vacío manejados
+- ✅ Tests unitarios con cobertura de funcionalidades clave
 
-## 📋 Checklist de Requisitos
+## 🚀 Demo / Deploy
 
-### Funcionalidades
-
-- [x] Lista de Pokémon paginada/lazy-load
-- [x] Orden alfabético por nombre
-- [x] Estados: loading, error, empty
-- [x] Búsqueda por nombre con validación
-- [x] Vista de detalle de Pokémon
-- [x] Sistema de favoritos con localStorage
-- [x] Filtro por tipo
-- [x] Validación de input (min 3 chars, sin especiales)
-
-### Arquitectura
-
-- [x] Atomic Design implementado
-- [x] Hooks personalizados
-- [x] Queries GraphQL separadas
-- [x] Utilidades modulares
-- [x] Componentes reutilizables
-
-### Testing
-
-- [x] Tests de validación
-- [x] Tests de favoritos
-- [x] Tests de ordenamiento
-- [x] Tests de storage
+**TBD** - Link de deploy pendiente
 
 ## 🛠 Stack Tecnológico
 
 - **React 19** - Biblioteca UI
-- **TypeScript** - Tipado estático
-- **Apollo Client** - Cliente GraphQL
+- **TypeScript 5.9** - Tipado estático
+- **Vite 7** - Build tool y dev server
+- **Apollo Client 4** - Cliente GraphQL
 - **React Router v7** - Navegación
 - **CSS Modules** - Estilos modulares
 - **Vitest** - Framework de testing
 - **Testing Library** - Utilidades de testing
-- **Vite** - Build tool
+
+## 📋 Requisitos Previos
+
+- **Node.js**: 18.x o superior
+- **pnpm**: 8.x o superior (recomendado) o npm 9.x+
 
 ## 📦 Instalación
 
@@ -61,7 +41,9 @@ Pokédex profesional construida con React, Apollo Client y GraphQL, siguiendo pr
 pnpm install
 ```
 
-## 🚀 Desarrollo
+## 🚀 Ejecución
+
+### Desarrollo
 
 ```bash
 pnpm dev
@@ -69,14 +51,7 @@ pnpm dev
 
 La aplicación estará disponible en `http://localhost:5173`
 
-### Rutas Disponibles
-
-- `/` - Lista principal de Pokémon (GraphQL)
-- `/rest` - Lista alternativa de Pokémon (REST API)
-- `/favorites` - Lista de Pokémon favoritos
-- `/pokemon/:id` - Detalle de un Pokémon específico
-
-## 🧪 Testing
+### Testing
 
 ```bash
 pnpm test
@@ -94,248 +69,194 @@ Para abrir la UI de tests:
 pnpm test:ui
 ```
 
-## 🏗 Build
+### Build
 
 ```bash
 pnpm build
 ```
 
-## 📁 Estructura del Proyecto
+El build de producción se generará en `dist/`
+
+### Preview del build
+
+```bash
+pnpm preview
+```
+
+## 🗂 Estructura del Proyecto
 
 ```
 src/
-  apollo/
-    client.ts                    # Configuración Apollo Client
-  graphql/
-    queries/
-      pokemonList.query.ts       # Query lista de Pokémon
-      pokemonDetail.query.ts     # Query detalle de Pokémon
-      pokemonTypeList.query.ts   # Query lista de tipos
-    types.ts                     # Tipos TypeScript
-  hooks/
-    usePokemonDetail.ts          # Hook detalle de Pokémon
-    usePokemonTypes.ts           # Hook tipos de Pokémon
-    usePokemonListFilters.ts     # Hook filtros de lista
-    useFilteredPokemon.ts        # Hook filtrado y ordenamiento
-    useInfinitePokemonList.ts    # Hook lista infinita GraphQL
-    useInfinitePokemonListRest.ts # Hook lista infinita REST
-    useInfiniteScroll.ts         # Hook scroll infinito
-    useDebouncedValue.ts         # Hook debounce
-  utils/
-    storage.ts                   # Utilidades localStorage
-    pokemon.ts                   # Utilidades Pokémon
-    fetcher.ts                   # Utilidades fetch
-    cx.ts                        # Utilidad className
-  contexts/
-    FavoritesContexts/           # Contexto de favoritos
-      FavoritesProvider.tsx
-      useFavoritesContext.ts
-  const/
-    colors.ts                    # Constantes de colores
-    labels.ts                    # Constantes de etiquetas
-  components/
-    atoms/                       # Componentes básicos
-      Button/
-      Input/
-      Badge/
-      IconButton/
-      Spinner/
-      Typography/
-      Select/
-      Radio/
-      Progress/
-      Popover/
-      [más componentes...]
-    molecules/                   # Componentes compuestos
-      PokemonCard/
-      FavoriteToggle/
-      LazyImage/
-    organisms/                   # Componentes complejos
-      PokemonListContent/
-      PokemonListFilter/
-      PokemonListHeader/
-      PokemonDetailHeader/
-      PokemonDetailInfo/
-      PokemonDetailMedia/
-    templates/                   # Plantillas de página
-      PokemonListTemplate/
-      PokemonDetailTemplate/
-    pages/                       # Páginas
-      PokemonListPage/
-      PokemonListRestPage/
-      PokemonListFavoritesPage/
-      PokemonDetailPage/
-  styles/
-    globals.css                  # Estilos globales
-    variables.css                # Variables CSS
-    typography.css               # Tipografía
-    shadows.css                  # Sombras
+├── apollo/
+│   └── client.ts                    # Configuración Apollo Client
+├── graphql/
+│   ├── queries/
+│   │   ├── pokemonList.query.ts     # Query lista de Pokémon
+│   │   ├── pokemonDetail.query.ts   # Query detalle de Pokémon
+│   │   └── pokemonTypeList.query.ts # Query lista de tipos
+│   └── types.ts                     # Tipos TypeScript generados
+├── hooks/
+│   ├── usePokemonDetail.ts          # Hook detalle de Pokémon
+│   ├── usePokemonTypes.ts           # Hook tipos de Pokémon
+│   ├── usePokemonListFilters.ts     # Hook gestión de filtros
+│   ├── useFilteredPokemon.ts        # Hook filtrado y ordenamiento (cliente)
+│   ├── useInfinitePokemonList.ts    # Hook lista infinita GraphQL
+│   ├── useInfinitePokemonListRest.ts # Hook lista infinita REST
+│   ├── useInfiniteScroll.ts         # Hook scroll infinito (IntersectionObserver)
+│   └── useDebouncedValue.ts         # Hook debounce para búsqueda
+├── utils/
+│   ├── storage.ts                   # Utilidades localStorage (favoritos)
+│   ├── pokemon.ts                   # Utilidades Pokémon (URLs de imágenes)
+│   ├── fetcher.ts                   # Utilidades fetch (REST API)
+│   └── cx.ts                        # Utilidad className condicional
+├── contexts/
+│   └── FavoritesContexts/           # Contexto de favoritos
+│       ├── FavoritesProvider.tsx
+│       └── useFavoritesContext.ts
+├── const/
+│   ├── colors.ts                    # Constantes de colores
+│   └── labels.ts                    # Constantes de etiquetas
+├── components/
+│   ├── atoms/                       # Componentes básicos (Button, Input, Badge, etc.)
+│   ├── molecules/                   # Componentes compuestos (PokemonCard, FavoriteToggle, LazyImage)
+│   ├── organisms/                   # Componentes complejos (PokemonListContent, PokemonListFilter, etc.)
+│   ├── templates/                   # Plantillas de página (PokemonListTemplate, PokemonDetailTemplate)
+│   └── pages/                       # Páginas con routing
+│       ├── PokemonListPage/         # Lista principal (GraphQL)
+│       ├── PokemonListRestPage/     # Lista alternativa (REST)
+│       ├── PokemonListFavoritesPage/ # Lista de favoritos
+│       └── PokemonDetailPage/       # Detalle de Pokémon
+├── styles/
+│   ├── globals.css                  # Estilos globales
+│   ├── variables.css                # Variables CSS (tokens de diseño)
+│   ├── typography.css               # Tipografía
+│   └── shadows.css                  # Sombras
+└── test/
+    ├── factories.ts                 # Factories para crear datos de prueba
+    ├── mocks.ts                     # Mocks de GraphQL (MockedProvider)
+    ├── helpers.tsx                  # Helpers de testing (renderWithProviders)
+    └── setup.ts                     # Configuración de tests
 ```
 
-## 🎨 Decisiones Técnicas
+## 🏗 Arquitectura
 
-### Atomic Design
+### Flujo de Datos: Data → Hooks → UI
 
-Se implementó Atomic Design para mantener una estructura clara y escalable:
+1. **GraphQL/REST API** → Datos desde servidor
+2. **Hooks personalizados** → Lógica de negocio y estado
+   - `useInfinitePokemonList`: Gestiona paginación, filtros y búsqueda (GraphQL)
+   - `useFilteredPokemon`: Filtrado y ordenamiento en cliente (para REST)
+   - `usePokemonListFilters`: Estado de filtros (búsqueda, orden, tipo)
+   - `useDebouncedValue`: Optimiza búsqueda con debounce (500ms)
+3. **Componentes UI** → Presentación y interacción
+   - Atomic Design: atoms → molecules → organisms → templates → pages
 
-- **Atoms**: Componentes básicos reutilizables (Button, Input, Badge)
-- **Molecules**: Combinaciones de atoms (SearchBar, PokemonCard)
-- **Organisms**: Componentes complejos (PokemonGrid, PokemonDetailPanel)
-- **Templates**: Estructuras de página
-- **Pages**: Páginas finales con routing
+### Manejo de Estados
 
-### Hooks Personalizados
-
-- `useInfinitePokemonList`: Maneja la lista infinita con filtros y búsqueda (GraphQL)
-- `useInfinitePokemonListRest`: Maneja la lista infinita usando REST API
-- `usePokemonDetail`: Obtiene detalles de un Pokémon
-- `usePokemonTypes`: Obtiene la lista de tipos de Pokémon
-- `usePokemonListFilters`: Gestiona el estado de los filtros
-- `useFilteredPokemon`: Filtra y ordena Pokémon en el cliente
-- `useInfiniteScroll`: Detecta cuando el usuario llega al final de la página
-- `useDebouncedValue`: Optimiza búsquedas con debounce
-- `useFavoritesContext`: Hook para acceder al contexto de favoritos
-
-### Apollo Client
-
-- Cache configurado con `InMemoryCache`
-- Endpoint configurado mediante variable de entorno `VITE_POKEMON_GRAPHQL_URI`
-- Queries optimizadas para obtener solo datos necesarios
-- Scroll infinito implementado con paginación
-
-### Validación de Input
-
-- Mínimo 3 caracteres
-- Solo letras, números y guiones
-- Validación en tiempo real
-- Botón deshabilitado si input inválido
-- Mensajes de error accesibles
+- **Loading**: Skeletons y spinners durante carga inicial y paginación
+- **Error**: Mensajes descriptivos con posibilidad de reintento
+- **Empty**: Mensajes informativos cuando no hay resultados
+- **Success**: Renderizado de datos con optimizaciones (lazy loading de imágenes)
 
 ### Sistema de Favoritos
 
-- Implementado con React Context API
-- Persistencia en localStorage
-- Acceso mediante `useFavoritesContext` hook
-- Página dedicada para ver favoritos (`/favorites`)
+- **API del hook**: `useFavoritesContext()` expone:
+  - `favorites`: Array de favoritos
+  - `toggleFavorite(pokemon)`: Agregar/remover favorito
+  - `isFavorite(id)`: Verificar si es favorito
+- **Persistencia**: localStorage con clave `pokedex_favorites`
+- **Deduplicación**: Automática al agregar (verifica por `id`)
+- **Formato**: `Array<{ id: number; name: string }>`
 
-### CSS Modules
+### Validación de Input
 
-Se eligió CSS Modules para:
+**Reglas de búsqueda:**
 
-- Estilos encapsulados y modulares
-- Mejor rendimiento (sin runtime)
-- Compatibilidad nativa con TypeScript
-- Variables CSS globales para temas consistentes
-- Path aliases configurados con `@/` para imports limpios
+- Mínimo 3 caracteres para activar búsqueda
+- Solo letras, números, espacios y guiones (`/^[a-z0-9\s-]+$/i`)
+- Sin caracteres especiales
 
-## 🔍 GraphQL
+**Cómo afecta UX:**
 
-El proyecto consume una API GraphQL configurada mediante variable de entorno:
+- Botón de búsqueda deshabilitado si input inválido
+- Búsqueda no se ejecuta hasta cumplir reglas
+- Mensajes de error accesibles con `aria-invalid` y `aria-describedby`
+- Validación en tiempo real con feedback visual
 
-- Variable: `VITE_POKEMON_GRAPHQL_URI`
-- Configuración en `.env` o `.env.local`
+### Accesibilidad
 
-### Queries Principales
+**Implementado:**
 
-**Lista de Pokémon:**
+- **Navegación por teclado**: ArrowLeft/ArrowRight para navegar entre Pokémon en detalle
+- **Focus states**: `:focus-visible` en todos los elementos interactivos
+- **ARIA labels**: `aria-label`, `aria-describedby`, `aria-invalid` en inputs
+- **Roles semánticos**: `button`, `textbox`, `dialog` (popover)
+- **Inputs ocultos visualmente**: Radio buttons con técnica de screen-reader-only
+- **Manejo de teclado**: Enter/Espacio en elementos no-button con `role="button"`
 
-```graphql
-query PokemonListWithCount(
-  $limit: Int!
-  $offset: Int!
-  $orderBy: [pokemon_order_by!]
-  $where: pokemon_bool_exp = {}
-) {
-  pokemon(limit: $limit, offset: $offset, order_by: $orderBy, where: $where) {
-    id
-    name
-    order
-  }
-  pokemon_aggregate(where: $where) {
-    aggregate {
-      count
-    }
-  }
-}
-```
+## 🧪 Testing
 
-**Detalle de Pokémon:**
-
-```graphql
-query GetPokemonDetail($id: Int!) {
-  pokemon(where: { id: { _eq: $id } }, limit: 1) {
-    id
-    name
-    height
-    weight
-    pokemontypes {
-      type {
-        name
-      }
-    }
-    pokemonmoves(order_by: { move: { id: desc } }, limit: 2) {
-      move {
-        name
-      }
-    }
-    pokemonstats {
-      base_stat
-      stat {
-        name
-      }
-    }
-    pokemonspecy {
-      pokemonspeciesflavortexts(
-        where: { language: { name: { _eq: "en" } } }
-        limit: 2
-      ) {
-        flavor_text
-      }
-    }
-  }
-}
-```
-
-**Lista de Tipos:**
-
-```graphql
-query Types {
-  type {
-    id
-    name
-  }
-}
-```
-
-## 🧪 Tests
+### Cobertura
 
 Los tests cubren:
 
-- Validación de búsqueda (min 3 chars, sin especiales)
-- Persistencia de favoritos en localStorage
-- Ordenamiento alfabético
-- Funcionalidad de favoritos (toggle, isFavorite)
+- ✅ **Validación de búsqueda**: Mínimo 3 caracteres, sin caracteres especiales
+- ✅ **Ordenamiento alfabético**: Por ID y por nombre
+- ✅ **Sistema de favoritos**: Toggle, persistencia en localStorage, verificación
+- ✅ **Filtrado por tipo**: Funcionalidad de filtros
+- ✅ **Componentes UI**: Input, FavoriteToggle, PokemonCard
+- ✅ **Hooks**: useFilteredPokemon, useDebouncedValue, usePokemonDetail
+- ✅ **Utils**: storage, cx, pokemon
 
-Ejecutar tests:
+### Estrategia de Mocking
 
-```bash
-pnpm test
+**GraphQL**: Se utiliza `MockedProvider` de Apollo Client (`@apollo/client/testing/react`)
+
+- Mocks centralizados en `src/test/mocks.ts`
+- Factories reutilizables en `src/test/factories.ts`
+- Helper `renderWithProviders()` que envuelve componentes con:
+  - `MockedProvider` (GraphQL)
+  - `MemoryRouter` (routing)
+  - `FavoritesProvider` (contexto)
+  - localStorage mock
+
+**Ejemplo de uso:**
+
+```typescript
+import { renderWithProviders } from "@/test/helpers";
+import { createPokemonListMock } from "@/test/mocks";
+
+const mocks = [createPokemonListMock(SAMPLE_POKEMON_LIST)];
+renderWithProviders(<PokemonListPage />, { mocks });
 ```
 
-## 🚢 Deploy
+## ⚡ Performance / UX
 
-[Agregar link del deploy cuando esté disponible]
+**Optimizaciones implementadas:**
 
-## 📝 Notas Adicionales
+1. **Scroll infinito**: IntersectionObserver con `rootMargin: 200px` para precarga
+2. **Debounce en búsqueda**: 500ms para reducir requests innecesarios
+3. **Lazy loading de imágenes**: Componente `LazyImage` con loading nativo
+4. **Deduplicación en paginación**: Evita duplicados al hacer `fetchMore`
+5. **Memoización**: `useMemo` en filtros y ordenamiento
+6. **CSS Modules**: Estilos encapsulados sin runtime overhead
+7. **Variables CSS centralizadas**: Tokens de diseño reutilizables
 
-### Configuración
+## 🔧 Configuración
 
-- Crear archivo `.env.local` con la variable `VITE_POKEMON_GRAPHQL_URI` apuntando al endpoint GraphQL
-- El proyecto incluye una página alternativa (`/rest`) que usa REST API en lugar de GraphQL
+### Variables de Entorno
+
+Crear archivo `.env.local` con:
+
+```env
+VITE_POKEMON_GRAPHQL_URI=https://tu-endpoint-graphql.com/v1/graphql
+VITE_POKEMON_REST_URI=https://pokeapi.co/api/v2
+VITE_SPRITES_BASE=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon
+```
 
 ### Path Aliases
 
-El proyecto utiliza path aliases configurados con `@/`:
+El proyecto utiliza path aliases configurados en `vite.config.ts`:
 
 - `@/pages` → `src/components/pages`
 - `@/atoms` → `src/components/atoms`
@@ -349,14 +270,20 @@ El proyecto utiliza path aliases configurados con `@/`:
 - `@/utils` → `src/utils`
 - `@/const` → `src/const`
 - `@/contexts` → `src/contexts`
+- `@/test` → `src/test`
 
-### Funcionalidades
+## 🛣 Rutas Disponibles
 
-- La búsqueda y filtros se aplican en el cliente después de obtener los datos
-- El ordenamiento se puede realizar por ID o nombre usando `localeCompare`
-- Scroll infinito implementado para mejor rendimiento con grandes listas
-- Sistema de favoritos persistente con React Context y localStorage
+- `/` - Lista principal de Pokémon (GraphQL)
+- `/rest` - Lista alternativa de Pokémon (REST API)
+- `/favorites` - Lista de Pokémon favoritos
+- `/pokemon/:id` - Detalle de un Pokémon específico
 
-## 👤 Autor
+## 📝 Próximos Pasos
 
-Desarrollado siguiendo mejores prácticas de desarrollo frontend profesional.
+1. **Deploy**: Configurar CI/CD y deploy en producción (Vercel/Netlify)
+2. **Tests de integración**: Flujos completos (búsqueda → filtro → detalle → favorito)
+3. **Optimización de imágenes**: Implementar WebP/AVIF con fallbacks
+4. **PWA**: Service Worker y offline support
+5. **Internacionalización**: Soporte multi-idioma (i18n)
+6. **Mejoras de accesibilidad**: Tests con axe-core, mejor contraste en modo oscuro

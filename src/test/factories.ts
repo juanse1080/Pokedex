@@ -83,10 +83,12 @@ export function makeFavoritePokemon(
   };
 }
 
-export function makePokemonType(overrides?: Partial<PokemonType>): PokemonType {
+export function makePokemonType(
+  overrides?: Partial<PokemonType & { id?: number }>
+): PokemonType & { id?: number } {
   return {
-    name: "grass",
-    ...overrides,
+    id: overrides?.id ?? 1,
+    name: overrides?.name ?? "grass",
   };
 }
 

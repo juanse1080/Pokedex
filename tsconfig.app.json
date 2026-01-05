@@ -16,6 +16,23 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Path aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/pages/*": ["./src/components/pages/*"],
+      "@/atoms/*": ["./src/components/atoms/*"],
+      "@/molecules/*": ["./src/components/molecules/*"],
+      "@/organisms/*": ["./src/components/organisms/*"],
+      "@/templates/*": ["./src/components/templates/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/graphql/*": ["./src/graphql/*"],
+      "@/apollo/*": ["./src/apollo/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/const/*": ["./src/const/*"],
+      "@/contexts/*": ["./src/contexts/*"]
+    },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

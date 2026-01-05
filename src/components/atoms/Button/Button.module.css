@@ -1,0 +1,36 @@
+.reset {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.button {
+  border: none;  
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+

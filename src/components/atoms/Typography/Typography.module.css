@@ -1,0 +1,24 @@
+.color-secondary {
+  color: var(--color-text-secondary);
+}
+
+.color-muted {
+  color: var(--color-text-muted);
+}
+
+.center {
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

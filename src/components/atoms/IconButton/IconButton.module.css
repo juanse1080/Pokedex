@@ -1,0 +1,48 @@
+.reset {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  height: 32px;
+  width: 32px;
+  min-width: 32px;  
+  max-width: 32px;
+  cursor: text;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-inner-2dp);
+  transition: box-shadow var(--transition-base);
+
+  color: var(--color-primary);
+}
+
+.button:focus-within {
+  box-shadow: var(--shadow-drop-6dp);
+}
+
+.button:focus-visible {
+  box-shadow: var(--shadow-drop-6dp);
+}
+
+.button:focus {
+  box-shadow: var(--shadow-drop-6dp);
+}
+

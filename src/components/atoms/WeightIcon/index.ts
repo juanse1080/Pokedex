@@ -1,0 +1,1 @@
+export { WeightIcon } from "./WeightIcon";

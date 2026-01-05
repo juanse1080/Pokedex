@@ -1,0 +1,2 @@
+export { TextAIcon } from "./TextAIcon";
+

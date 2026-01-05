@@ -1,0 +1,30 @@
+.progressContainer {
+  width: 100%;
+  height: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+}
+
+.progressBar {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.progressBarFill {
+  height: 100%;
+  z-index: 1;
+  border-radius: var(--radius-sm);
+}
+
+.progressBarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-sm);
+  opacity: 0.2;
+}

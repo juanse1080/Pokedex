@@ -1,0 +1,57 @@
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+  user-select: none;
+}
+
+.trigger:focus-visible {
+  outline: none;
+  outline-offset: 2px;
+}
+
+.chev {
+  transition: transform 150ms ease;
+}
+
+.chevOpen {
+  transform: rotate(180deg);
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+
+  min-width: 113px;
+  max-width: min(24rem, 90vw);
+
+  border: none;
+  border-radius: 0.75rem;
+
+  z-index: 20;
+  overflow: hidden;
+}
+
+.right .panel {
+  left: auto;
+  right: 0;
+}
+
+.panel:focus-visible {
+  outline: none;
+  outline-offset: 2px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  display: grid;
+  gap: 0.5rem;
+}

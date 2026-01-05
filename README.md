@@ -17,9 +17,10 @@ Aplicación web profesional de Pokédex construida con React, Apollo Client y Gr
 
 ## 🚀 Demo / Deploy
 
-La aplicación está desplegada automáticamente en GitHub Pages mediante CI/CD.
+La aplicación está desplegada automáticamente en Vercel y alternativamente en GitHub Pages mediante CI/CD.
 
-**URL del sitio**: [https://juanse1080.github.io/Pokedex/index.html](https://juanse1080.github.io/Pokedex/index.html)
+**URL del sitio** : [https://pokedex-theta-wheat-44.vercel.app/](https://pokedex-theta-wheat-44.vercel.app/)
+**URL alternativa (Vercel)**: [https://juanse1080.github.io/Pokedex/index.html](https://juanse1080.github.io/Pokedex/index.html)
 
 ## 🛠 Stack Tecnológico
 

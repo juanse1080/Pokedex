@@ -74,11 +74,12 @@
 .cardSkeleton {
   width: 100%;
   height: 108px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.06) 25%,
-    rgba(0, 0, 0, 0.12) 37%,
-    rgba(0, 0, 0, 0.06) 63%
-  );
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.08) 40%,
+      rgba(0, 0, 0, 0.04) 80%);
+  background-size: 200% 100%;
+  animation: shimmer 1.1s linear infinite;
   border-radius: var(--radius-md);
 }

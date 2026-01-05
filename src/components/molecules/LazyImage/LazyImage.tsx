@@ -44,7 +44,7 @@ export function LazyImage({
       <div className={styles.skeleton} aria-hidden="true" />
 
       {failed ? (
-        <div className={styles.fallback} aria-label={alt}>
+        <div className={styles.fallback} role="img" aria-label={alt}>
           No image
         </div>
       ) : (

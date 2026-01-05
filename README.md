@@ -19,7 +19,7 @@ Aplicación web profesional de Pokédex construida con React, Apollo Client y Gr
 
 La aplicación está desplegada automáticamente en GitHub Pages mediante CI/CD.
 
-**URL del sitio**: `https://juanse1080.github.io/pokedex/`
+**URL del sitio**: `https://juanse1080.github.io/Pokedex/index.html`
 
 ## 🛠 Stack Tecnológico
 

@@ -17,7 +17,9 @@ Aplicación web profesional de Pokédex construida con React, Apollo Client y Gr
 
 ## 🚀 Demo / Deploy
 
-**TBD** - Link de deploy pendiente
+La aplicación está desplegada automáticamente en GitHub Pages mediante CI/CD.
+
+**URL del sitio**: `https://juanse1080.github.io/pokedex/`
 
 ## 🛠 Stack Tecnológico
 
@@ -246,13 +248,16 @@ renderWithProviders(<PokemonListPage />, { mocks });
 
 ### Variables de Entorno
 
-Crear archivo `.env.local` con:
+Crear archivo `.env.local` en la raíz del proyecto con:
 
 ```env
-VITE_POKEMON_GRAPHQL_URI=https://tu-endpoint-graphql.com/v1/graphql
+VITE_POKEMON_GRAPHQL_URI=https://graphql.pokeapi.co/v1beta2
 VITE_POKEMON_REST_URI=https://pokeapi.co/api/v2
-VITE_SPRITES_BASE=https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon
+VITE_SPRITES_BASE=https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon
+VITE_BASE_PATH=/
 ```
+
+**Nota**: `VITE_BASE_PATH` solo es necesario para desarrollo local. En producción (GitHub Pages) se calcula automáticamente.
 
 ### Path Aliases
 
@@ -279,11 +284,68 @@ El proyecto utiliza path aliases configurados en `vite.config.ts`:
 - `/favorites` - Lista de Pokémon favoritos
 - `/pokemon/:id` - Detalle de un Pokémon específico
 
+## 📦 Despliegue en GitHub Pages
+
+### Configuración Inicial
+
+1. **Habilitar GitHub Pages**:
+
+   - Ve a tu repositorio en GitHub
+   - Settings → Pages (menú lateral)
+   - En "Source", selecciona: **GitHub Actions**
+   - Guarda los cambios
+
+2. **Configurar Secrets (Opcional)**:
+   - Si necesitas cambiar las URLs por defecto en producción:
+   - Settings → Secrets and variables → Actions
+   - New repository secret
+   - Agrega: `VITE_POKEMON_GRAPHQL_URI`, `VITE_POKEMON_REST_URI`, `VITE_SPRITES_BASE`
+   - Si no defines secrets, se usarán los valores por defecto del workflow
+
+### Despliegue Automático
+
+El despliegue se ejecuta automáticamente al hacer push a la rama `main`:
+
+```bash
+git add .
+git commit -m "feat: actualización"
+git push origin main
+```
+
+### Verificar el Deploy
+
+1. **Revisar el workflow**:
+
+   - Ve a la pestaña "Actions" en GitHub
+   - Verifica que el workflow "Deploy to GitHub Pages" se ejecute correctamente
+   - Espera 2-3 minutos para que complete
+
+2. **Obtener la URL del sitio**:
+
+   - Una vez completado, ve a Settings → Pages
+   - Verás: "Your site is live at https://..."
+   - O usa el formato: `https://<TU_USERNAME>.github.io/<REPO_NAME>/`
+
+3. **Verificar funcionalidad**:
+   - ✅ Assets cargan correctamente (imágenes, CSS, fuentes)
+   - ✅ Navegación interna funciona (click en Pokémon, favoritos, etc.)
+   - ✅ Refresh en rutas no revienta (ej: `/pokemon/1` → F5)
+   - ✅ Datos de GraphQL se cargan
+
+### Estructura del Workflow
+
+El workflow (`.github/workflows/deploy.yml`) realiza:
+
+- Build con base path dinámico según el nombre del repo
+- Upload del artifact a GitHub Pages
+- Deploy automático
+
+**No requiere configuración manual adicional** una vez habilitado GitHub Pages.
+
 ## 📝 Próximos Pasos
 
-1. **Deploy**: Configurar CI/CD y deploy en producción (Vercel/Netlify)
-2. **Tests de integración**: Flujos completos (búsqueda → filtro → detalle → favorito)
-3. **Optimización de imágenes**: Implementar WebP/AVIF con fallbacks
-4. **PWA**: Service Worker y offline support
-5. **Internacionalización**: Soporte multi-idioma (i18n)
-6. **Mejoras de accesibilidad**: Tests con axe-core, mejor contraste en modo oscuro
+1. **Tests de integración**: Flujos completos (búsqueda → filtro → detalle → favorito)
+2. **Optimización de imágenes**: Implementar WebP/AVIF con fallbacks
+3. **PWA**: Service Worker y offline support
+4. **Internacionalización**: Soporte multi-idioma (i18n)
+5. **Mejoras de accesibilidad**: Tests con axe-core, mejor contraste en modo oscuro
